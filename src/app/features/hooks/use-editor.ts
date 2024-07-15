@@ -5,11 +5,10 @@ import { useAutoResize } from "./use-auto-resize";
 export const useEditor = () => {
   const [canvas, setCanvas] = useState<fabric.Canvas | null>(null); // always give default value
   const [container, setContainer] = useState<HTMLDivElement | null>(null);
-  useAutoResize({
+  const { autoZoom } = useAutoResize({
     canvas,
     container,
   });
-
   const init = useCallback(
     ({
       initialContainer,
