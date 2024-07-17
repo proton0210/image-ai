@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { ActiveTool } from "../types";
+import { ActiveTool, Editor } from "../types";
 import { ToolSidebarHeader } from "./tool-sidebar-header";
 import { ToolSidebarClose } from "./tool-sidebar-close";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -11,9 +11,11 @@ import { FaDiamond } from "react-icons/fa6";
 interface ShapeSidebarProps {
   activeTool: ActiveTool;
   onChangeActiveTool: (tool: ActiveTool) => void;
+  editor: Editor | undefined;
 }
 
 export const ShapeSidebar = ({
+  editor,
   activeTool,
   onChangeActiveTool,
 }: ShapeSidebarProps) => {
@@ -33,7 +35,7 @@ export const ShapeSidebar = ({
       />
       <ScrollArea>
         <div className="grid grid-cols-3 gap-4 p-4">
-          <ShapeTool onClick={() => {}} icon={FaCircle} />
+          <ShapeTool onClick={() => editor?.addCircle()} icon={FaCircle} />
           <ShapeTool onClick={() => {}} icon={FaSquare} />
           <ShapeTool onClick={() => {}} icon={FaSquareFull} />
           <ShapeTool onClick={() => {}} icon={IoTriangle} />
